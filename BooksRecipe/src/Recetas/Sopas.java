@@ -1,5 +1,12 @@
 package Recetas;
 
+import java.awt.Image;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import javax.swing.ImageIcon;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
@@ -16,6 +23,12 @@ public class Sopas extends javax.swing.JPanel {
      */
     public Sopas() {
         initComponents();
+        ingredientes.setLineWrap(true);
+        ingredientes.setWrapStyleWord(true);
+        ingredientes.setVisible(false);
+        pasos.setLineWrap(true);
+        pasos.setWrapStyleWord(true);
+        pasos.setVisible(false);
     }
 
     /**
@@ -32,6 +45,12 @@ public class Sopas extends javax.swing.JPanel {
         ajiaco = new javax.swing.JButton();
         caldo = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        imagen = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        ingredientes = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        pasos = new javax.swing.JTextArea();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -49,57 +68,189 @@ public class Sopas extends javax.swing.JPanel {
         });
 
         caldo.setText("Seleccionar");
+        caldo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caldoActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Sopas");
+
+        ingredientes.setColumns(20);
+        ingredientes.setRows(5);
+        jScrollPane1.setViewportView(ingredientes);
+
+        pasos.setColumns(20);
+        pasos.setRows(5);
+        jScrollPane2.setViewportView(pasos);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(imagen)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(imagen)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1))
+                .addContainerGap(211, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(98, 98, 98)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ajiaco, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 179, Short.MAX_VALUE)
+                .addGap(63, 63, 63)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(caldo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(118, 118, 118))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(220, 220, 220)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ajiaco, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 136, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(caldo, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(100, 100, 100))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(76, 76, 76)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ajiaco, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(caldo, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(230, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel3)
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(caldo, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ajiaco, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+    String rutaArchivo = "C:\\Users\\Cristian\\OneDrive\\Documentos\\Universidad\\POO\\book\\BooksRecipe\\textosRecetas\\"; // Reemplaza con la ruta de tu archivo
 
     private void ajiacoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajiacoActionPerformed
-        // TODO add your handling code here:
+        ImageIcon imagenIcono = new ImageIcon("C:\\Users\\Cristian\\OneDrive\\Documentos\\Universidad\\POO\\book\\BooksRecipe\\images\\ajiaco.jpg"); // Reemplaza con la ruta de tu imagen
+        
+        Image imagenOriginal = imagenIcono.getImage();
+        Image imagenRedimensionada = imagenOriginal.getScaledInstance(500, 300, Image.SCALE_SMOOTH);
+        
+        ImageIcon imagenRedimensionadaIcono = new ImageIcon(imagenRedimensionada);
+        imagen.setIcon(imagenRedimensionadaIcono);
+        
+        ingredientes.setVisible(true);
+        pasos.setVisible(true);
+        try {
+            File archivo1 = new File(rutaArchivo + "ajiacoIng.txt");
+            File archivo2 = new File(rutaArchivo + "ajiacoPre.txt");
+            FileReader fileReader1 = new FileReader(archivo1);
+            FileReader fileReader2 = new FileReader(archivo2);
+            BufferedReader bufferedReader1 = new BufferedReader(fileReader1);
+            BufferedReader bufferedReader2 = new BufferedReader(fileReader2);
+            
+            String linea;
+            while ((linea = bufferedReader1.readLine()) != null) {
+                String currText = ingredientes.getText();
+                String nextText = currText + linea;
+                ingredientes.setText(nextText);
+            }    
+            while ((linea = bufferedReader2.readLine()) != null) {
+                String currText = pasos.getText();
+                String nextText = currText + linea;
+                pasos.setText(nextText);
+            }
+            
+            bufferedReader1.close();
+            bufferedReader2.close();
+        } catch (IOException e) {
+            System.out.println("Error al leer el archivo: " + e.getMessage());
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_ajiacoActionPerformed
+
+    private void caldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caldoActionPerformed
+        ImageIcon imagenIcono = new ImageIcon("C:\\Users\\Cristian\\OneDrive\\Documentos\\Universidad\\POO\\book\\BooksRecipe\\images\\Caldo-de-Costilla.jpg"); // Reemplaza con la ruta de tu imagen
+        
+        Image imagenOriginal = imagenIcono.getImage();
+        Image imagenRedimensionada = imagenOriginal.getScaledInstance(500, 300, Image.SCALE_SMOOTH);
+        
+        ImageIcon imagenRedimensionadaIcono = new ImageIcon(imagenRedimensionada);
+        imagen.setIcon(imagenRedimensionadaIcono);
+        
+        ingredientes.setVisible(true);
+        pasos.setVisible(true);
+        try {
+            File archivo1 = new File(rutaArchivo + "caldoIng.txt");
+            File archivo2 = new File(rutaArchivo + "caldoPre.txt");
+            FileReader fileReader1 = new FileReader(archivo1);
+            FileReader fileReader2 = new FileReader(archivo2);
+            BufferedReader bufferedReader1 = new BufferedReader(fileReader1);
+            BufferedReader bufferedReader2 = new BufferedReader(fileReader2);
+            
+            String linea;
+            while ((linea = bufferedReader1.readLine()) != null) {
+                String currText = ingredientes.getText();
+                String nextText = currText + linea;
+                ingredientes.setText(nextText);
+            }    
+            while ((linea = bufferedReader2.readLine()) != null) {
+                String currText = pasos.getText();
+                String nextText = currText + linea;
+                pasos.setText(nextText);
+            }
+            
+            bufferedReader1.close();
+            bufferedReader2.close();
+        } catch (IOException e) {
+            System.out.println("Error al leer el archivo: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_caldoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ajiaco;
     private javax.swing.JButton caldo;
+    private javax.swing.JLabel imagen;
+    private javax.swing.JTextArea ingredientes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea pasos;
     // End of variables declaration//GEN-END:variables
 }

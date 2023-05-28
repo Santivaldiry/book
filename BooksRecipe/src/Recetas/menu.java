@@ -4,22 +4,27 @@
  */
 package Recetas;
 import java.awt.BorderLayout;
+import java.awt.Component;
 import javax.swing.JPanel;
+import java.io.File;
+import java.io.IOException;   
 /**
  *
  * @author santi-juli
  */
 public class menu extends javax.swing.JFrame {
+    
+    
+    
 
+    public menu(){
+        
+    }
     /**
      * Creates new form menu
      */
-    public menu() {
+    public menu(int i) {
         initComponents();
-        Sopas sp = new Sopas();
-        Postres ps = new Postres();
-        Pastas pt = new Pastas();
-        Carnes cn = new Carnes();
     }
 
     /**
@@ -134,8 +139,7 @@ public class menu extends javax.swing.JFrame {
 
     private void sopasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sopasActionPerformed
         Sopas sp = new Sopas();
-        ShowPanel(sp);
-        
+        ShowPanel(sp);  
     }//GEN-LAST:event_sopasActionPerformed
 
     private void postresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postresActionPerformed
@@ -144,22 +148,25 @@ public class menu extends javax.swing.JFrame {
     }//GEN-LAST:event_postresActionPerformed
 
     private void pastasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pastasActionPerformed
-       Pastas pt = new Pastas();
-       ShowPanel(pt);
+        Pastas pt = new Pastas();
+        ShowPanel(pt);
     }//GEN-LAST:event_pastasActionPerformed
 
     private void carnesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carnesActionPerformed
         Carnes cn = new Carnes();
         ShowPanel(cn);
     }//GEN-LAST:event_carnesActionPerformed
-    private void ShowPanel(JPanel p){
-      p.setSize(787, 677);
-      p.setLocation(0,0);
+    public void ShowPanel(JPanel p){
+        p.setSize(787, 677);
+        p.setLocation(0,0);
       
-      menu.removeAll();
-      menu.add(p, BorderLayout.CENTER);
-      menu.revalidate();
-      menu.repaint();
+        Component currentPanel = getContentPane().getComponent(0);
+        if (currentPanel == menu) {
+            getContentPane().remove(menu);
+            getContentPane().add(p, BorderLayout.CENTER);
+        }
+        getContentPane().validate();
+        getContentPane().repaint();
     }
     /**
      * @param args the command line arguments
@@ -187,11 +194,10 @@ public class menu extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new menu().setVisible(true);
+                new menu(1).setVisible(true);
             }
         });
     }

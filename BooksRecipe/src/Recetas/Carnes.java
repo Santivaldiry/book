@@ -1,5 +1,13 @@
 package Recetas;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import javax.swing.*;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
@@ -9,13 +17,21 @@ package Recetas;
  *
  * @author santi-juli
  */
-public class Carnes extends javax.swing.JPanel {
+public class Carnes extends JPanel {
 
+    
     /**
      * Creates new form Carnes
      */
     public Carnes() {
-        initComponents();
+        initComponents();  
+        ingredientes.setLineWrap(true);
+        ingredientes.setWrapStyleWord(true);
+        ingredientes.setVisible(false);
+        pasos.setLineWrap(true);
+        pasos.setWrapStyleWord(true);
+        pasos.setVisible(false);
+        
     }
 
     /**
@@ -32,6 +48,12 @@ public class Carnes extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         costillas = new javax.swing.JButton();
         lomo = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        imagen = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        ingredientes = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        pasos = new javax.swing.JTextArea();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -53,53 +75,190 @@ public class Carnes extends javax.swing.JPanel {
         });
 
         lomo.setText("Seleccionar");
+        lomo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lomoActionPerformed(evt);
+            }
+        });
+
+        jPanel1.setForeground(new java.awt.Color(30, 30, 30));
+
+        ingredientes.setColumns(20);
+        ingredientes.setRows(5);
+        jScrollPane1.setViewportView(ingredientes);
+
+        pasos.setColumns(20);
+        pasos.setRows(5);
+        jScrollPane2.setViewportView(pasos);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(imagen))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(47, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(52, 52, 52)
+                .addComponent(imagen)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(147, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(257, 257, 257)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(85, 85, 85)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(92, 92, 92)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(costillas, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 183, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
-                    .addComponent(lomo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(155, 155, 155))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(costillas, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(111, 111, 111))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lomo, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(160, 160, 160))))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(251, 251, 251)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 57, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(53, 53, 53)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(costillas, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lomo, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(164, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lomo, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(costillas, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+    String rutaArchivo = "C:\\Users\\Cristian\\OneDrive\\Documentos\\Universidad\\POO\\book\\BooksRecipe\\textosRecetas\\"; // Reemplaza con la ruta de tu archivo
 
     private void costillasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_costillasActionPerformed
-        // TODO add your handling code here:
+        ImageIcon imagenIcono = new ImageIcon("C:\\Users\\Cristian\\OneDrive\\Documentos\\Universidad\\POO\\book\\BooksRecipe\\images\\costillas.jpg"); // Reemplaza con la ruta de tu imagen
+        
+        Image imagenOriginal = imagenIcono.getImage();
+        Image imagenRedimensionada = imagenOriginal.getScaledInstance(500, 300, Image.SCALE_SMOOTH);
+        
+        ImageIcon imagenRedimensionadaIcono = new ImageIcon(imagenRedimensionada);
+        imagen.setIcon(imagenRedimensionadaIcono);
+        
+        ingredientes.setVisible(true);
+        pasos.setVisible(true);
+        try {
+            File archivo1 = new File(rutaArchivo + "cosIng.txt");
+            File archivo2 = new File(rutaArchivo + "cosPre.txt");
+            FileReader fileReader1 = new FileReader(archivo1);
+            FileReader fileReader2 = new FileReader(archivo2);
+            BufferedReader bufferedReader1 = new BufferedReader(fileReader1);
+            BufferedReader bufferedReader2 = new BufferedReader(fileReader2);
+            
+            String linea;
+            while ((linea = bufferedReader1.readLine()) != null) {
+                String currText = ingredientes.getText();
+                String nextText = currText + linea;
+                ingredientes.setText(nextText);
+            }    
+            while ((linea = bufferedReader2.readLine()) != null) {
+                String currText = pasos.getText();
+                String nextText = currText + linea;
+                pasos.setText(nextText);
+            }
+            
+            bufferedReader1.close();
+            bufferedReader2.close();
+        } catch (IOException e) {
+            System.out.println("Error al leer el archivo: " + e.getMessage());
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_costillasActionPerformed
 
+    private void lomoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lomoActionPerformed
+        ImageIcon imagenIcono = new ImageIcon("C:\\Users\\Cristian\\OneDrive\\Documentos\\Universidad\\POO\\book\\BooksRecipe\\images\\lomo-de-cerdo.jpg"); // Reemplaza con la ruta de tu imagen
+        
+        Image imagenOriginal = imagenIcono.getImage();
+        Image imagenRedimensionada = imagenOriginal.getScaledInstance(500, 300, Image.SCALE_SMOOTH);
+        
+        ImageIcon imagenRedimensionadaIcono = new ImageIcon(imagenRedimensionada);
+        imagen.setIcon(imagenRedimensionadaIcono);
+        
+        ingredientes.setVisible(true);
+        pasos.setVisible(true);
+        try {
+            File archivo1 = new File(rutaArchivo + "lomoIng.txt");
+            File archivo2 = new File(rutaArchivo + "lomoPre.txt");
+            FileReader fileReader1 = new FileReader(archivo1);
+            FileReader fileReader2 = new FileReader(archivo2);
+            BufferedReader bufferedReader1 = new BufferedReader(fileReader1);
+            BufferedReader bufferedReader2 = new BufferedReader(fileReader2);
+            
+            String linea;
+            while ((linea = bufferedReader1.readLine()) != null) {
+                String currText = ingredientes.getText();
+                String nextText = currText + linea;
+                ingredientes.setText(nextText);
+            }    
+            while ((linea = bufferedReader2.readLine()) != null) {
+                String currText = pasos.getText();
+                String nextText = currText + linea;
+                pasos.setText(nextText);
+            }
+            
+            bufferedReader1.close();
+            bufferedReader2.close();
+        } catch (IOException e) {
+            System.out.println("Error al leer el archivo: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_lomoActionPerformed
+
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton costillas;
+    private javax.swing.JLabel imagen;
+    private javax.swing.JTextArea ingredientes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton lomo;
+    private javax.swing.JTextArea pasos;
     // End of variables declaration//GEN-END:variables
 }
