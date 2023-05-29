@@ -54,6 +54,7 @@ public class Carnes extends JPanel {
         ingredientes = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
         pasos = new javax.swing.JTextArea();
+        atras = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -96,16 +97,16 @@ public class Carnes extends JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(imagen))
+                        .addComponent(imagen)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(47, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,11 +114,18 @@ public class Carnes extends JPanel {
                 .addGap(52, 52, 52)
                 .addComponent(imagen)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(147, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
+
+        atras.setText("Atras");
+        atras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atrasActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -130,23 +138,23 @@ public class Carnes extends JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(costillas, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(111, 111, 111))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(atras)
+                        .addGap(63, 63, 63)
                         .addComponent(lomo, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(160, 160, 160))))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(251, 251, 251)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 57, Short.MAX_VALUE))
+                .addGap(251, 251, 251)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 304, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,11 +167,12 @@ public class Carnes extends JPanel {
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lomo, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lomo, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(atras))
                             .addComponent(costillas, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
     String rutaArchivo = "C:\\Users\\Cristian\\OneDrive\\Documentos\\Universidad\\POO\\book\\BooksRecipe\\textosRecetas\\"; // Reemplaza con la ruta de tu archivo
@@ -172,7 +181,7 @@ public class Carnes extends JPanel {
         ImageIcon imagenIcono = new ImageIcon("C:\\Users\\Cristian\\OneDrive\\Documentos\\Universidad\\POO\\book\\BooksRecipe\\images\\costillas.jpg"); // Reemplaza con la ruta de tu imagen
         
         Image imagenOriginal = imagenIcono.getImage();
-        Image imagenRedimensionada = imagenOriginal.getScaledInstance(500, 300, Image.SCALE_SMOOTH);
+        Image imagenRedimensionada = imagenOriginal.getScaledInstance(500, 250, Image.SCALE_SMOOTH);
         
         ImageIcon imagenRedimensionadaIcono = new ImageIcon(imagenRedimensionada);
         imagen.setIcon(imagenRedimensionadaIcono);
@@ -188,13 +197,15 @@ public class Carnes extends JPanel {
             BufferedReader bufferedReader2 = new BufferedReader(fileReader2);
             
             String linea;
+            ingredientes.setText("");
+            pasos.setText("");
             while ((linea = bufferedReader1.readLine()) != null) {
-                String currText = ingredientes.getText();
+                String currText = ingredientes.getText() + "\n";
                 String nextText = currText + linea;
                 ingredientes.setText(nextText);
             }    
             while ((linea = bufferedReader2.readLine()) != null) {
-                String currText = pasos.getText();
+                String currText = pasos.getText() + "\n";
                 String nextText = currText + linea;
                 pasos.setText(nextText);
             }
@@ -211,7 +222,7 @@ public class Carnes extends JPanel {
         ImageIcon imagenIcono = new ImageIcon("C:\\Users\\Cristian\\OneDrive\\Documentos\\Universidad\\POO\\book\\BooksRecipe\\images\\lomo-de-cerdo.jpg"); // Reemplaza con la ruta de tu imagen
         
         Image imagenOriginal = imagenIcono.getImage();
-        Image imagenRedimensionada = imagenOriginal.getScaledInstance(500, 300, Image.SCALE_SMOOTH);
+        Image imagenRedimensionada = imagenOriginal.getScaledInstance(500, 250, Image.SCALE_SMOOTH);
         
         ImageIcon imagenRedimensionadaIcono = new ImageIcon(imagenRedimensionada);
         imagen.setIcon(imagenRedimensionadaIcono);
@@ -228,12 +239,12 @@ public class Carnes extends JPanel {
             
             String linea;
             while ((linea = bufferedReader1.readLine()) != null) {
-                String currText = ingredientes.getText();
+                String currText = ingredientes.getText() + "\n";
                 String nextText = currText + linea;
                 ingredientes.setText(nextText);
             }    
             while ((linea = bufferedReader2.readLine()) != null) {
-                String currText = pasos.getText();
+                String currText = pasos.getText() + "\n";
                 String nextText = currText + linea;
                 pasos.setText(nextText);
             }
@@ -246,9 +257,16 @@ public class Carnes extends JPanel {
         }
     }//GEN-LAST:event_lomoActionPerformed
 
+    private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
+        this.setVisible(false);
+        menu m = new menu(1);
+        m.setVisible(true);
+    }//GEN-LAST:event_atrasActionPerformed
+
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton atras;
     private javax.swing.JButton costillas;
     private javax.swing.JLabel imagen;
     private javax.swing.JTextArea ingredientes;

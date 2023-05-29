@@ -1,5 +1,12 @@
 package Recetas;
 
+import java.awt.Image;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import javax.swing.ImageIcon;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
@@ -16,6 +23,12 @@ public class Pastas extends javax.swing.JPanel {
      */
     public Pastas() {
         initComponents();
+        ingredientes.setLineWrap(true);
+        ingredientes.setWrapStyleWord(true);
+        ingredientes.setVisible(false);
+        pasos.setLineWrap(true);
+        pasos.setWrapStyleWord(true);
+        pasos.setVisible(false);
     }
 
     /**
@@ -32,6 +45,14 @@ public class Pastas extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         spaghetti = new javax.swing.JButton();
         risotto = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        imagen = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        ingredientes = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        pasos = new javax.swing.JTextArea();
+        jLabel4 = new javax.swing.JLabel();
+        atras = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -53,55 +74,207 @@ public class Pastas extends javax.swing.JPanel {
         });
 
         risotto.setText("Seleccionar");
+        risotto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                risottoActionPerformed(evt);
+            }
+        });
+
+        ingredientes.setColumns(20);
+        ingredientes.setRows(5);
+        jScrollPane1.setViewportView(ingredientes);
+
+        pasos.setColumns(20);
+        pasos.setRows(5);
+        jScrollPane2.setViewportView(pasos);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(imagen))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(jLabel4)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(imagen)
+                .addGap(12, 12, 12)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(68, Short.MAX_VALUE))
+        );
+
+        atras.setText("Atras");
+        atras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atrasActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(277, 277, 277)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(65, 65, 65)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(spaghetti, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 242, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(spaghetti, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(125, 125, 125))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(279, 279, 279))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(risotto, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(110, 110, 110))))
+                        .addComponent(atras)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(risotto, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(99, 99, 99))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 32, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57)
+                .addComponent(jLabel1)
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(67, 67, 67)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(risotto, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(spaghetti, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(170, Short.MAX_VALUE))
+                    .addComponent(spaghetti, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(risotto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(atras))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
         );
     }// </editor-fold>//GEN-END:initComponents
+    
+    String rutaArchivo = "C:\\Users\\Cristian\\OneDrive\\Documentos\\Universidad\\POO\\book\\BooksRecipe\\textosRecetas\\";
 
     private void spaghettiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spaghettiActionPerformed
-        // TODO add your handling code here:
+        ImageIcon imagenIcono = new ImageIcon("C:\\Users\\Cristian\\OneDrive\\Documentos\\Universidad\\POO\\book\\BooksRecipe\\images\\Spaghetti.jpg"); // Reemplaza con la ruta de tu imagen
+        
+        Image imagenOriginal = imagenIcono.getImage();
+        Image imagenRedimensionada = imagenOriginal.getScaledInstance(500, 250, Image.SCALE_SMOOTH);
+        
+        ImageIcon imagenRedimensionadaIcono = new ImageIcon(imagenRedimensionada);
+        imagen.setIcon(imagenRedimensionadaIcono);
+        
+        ingredientes.setVisible(true);
+        pasos.setVisible(true);
+        try {
+            File archivo1 = new File(rutaArchivo + "spaIng.txt");
+            File archivo2 = new File(rutaArchivo + "spaPre.txt");
+            FileReader fileReader1 = new FileReader(archivo1);
+            FileReader fileReader2 = new FileReader(archivo2);
+            BufferedReader bufferedReader1 = new BufferedReader(fileReader1);
+            BufferedReader bufferedReader2 = new BufferedReader(fileReader2);
+            
+            String linea;
+            while ((linea = bufferedReader1.readLine()) != null) {
+                String currText = ingredientes.getText() + "\n";
+                String nextText = currText + linea;
+                ingredientes.setText(nextText);
+            }    
+            while ((linea = bufferedReader2.readLine()) != null) {
+                String currText = pasos.getText() + "\n";
+                String nextText = currText + linea;
+                pasos.setText(nextText);
+            }
+            
+            bufferedReader1.close();
+            bufferedReader2.close();
+        } catch (IOException e) {
+            System.out.println("Error al leer el archivo: " + e.getMessage());
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_spaghettiActionPerformed
+
+    private void risottoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_risottoActionPerformed
+        ImageIcon imagenIcono = new ImageIcon("C:\\Users\\Cristian\\OneDrive\\Documentos\\Universidad\\POO\\book\\BooksRecipe\\images\\Risotto-de-setas.jpg"); // Reemplaza con la ruta de tu imagen
+        
+        Image imagenOriginal = imagenIcono.getImage();
+        Image imagenRedimensionada = imagenOriginal.getScaledInstance(500, 250, Image.SCALE_SMOOTH);
+        
+        ImageIcon imagenRedimensionadaIcono = new ImageIcon(imagenRedimensionada);
+        imagen.setIcon(imagenRedimensionadaIcono);
+        
+        ingredientes.setVisible(true);
+        pasos.setVisible(true);
+        try {
+            File archivo1 = new File(rutaArchivo + "risIng.txt");
+            File archivo2 = new File(rutaArchivo + "risPre.txt");
+            FileReader fileReader1 = new FileReader(archivo1);
+            FileReader fileReader2 = new FileReader(archivo2);
+            BufferedReader bufferedReader1 = new BufferedReader(fileReader1);
+            BufferedReader bufferedReader2 = new BufferedReader(fileReader2);
+            
+            String linea;
+            ingredientes.setText("");
+            pasos.setText("");
+            while ((linea = bufferedReader1.readLine()) != null) {
+                String currText = ingredientes.getText() + "\n";
+                String nextText = currText + linea;
+                ingredientes.setText(nextText);
+            }    
+            while ((linea = bufferedReader2.readLine()) != null) {
+                String currText = pasos.getText();
+                String nextText = currText + linea + "\n";
+                pasos.setText(nextText);
+            }
+            
+            bufferedReader1.close();
+            bufferedReader2.close();
+        } catch (IOException e) {
+            System.out.println("Error al leer el archivo: " + e.getMessage());
+            e.printStackTrace();
+        } 
+    }//GEN-LAST:event_risottoActionPerformed
+
+    private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
+        this.setVisible(false);
+        menu m = new menu(1);
+        m.setVisible(true);
+    }//GEN-LAST:event_atrasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton atras;
+    private javax.swing.JLabel imagen;
+    private javax.swing.JTextArea ingredientes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea pasos;
     private javax.swing.JButton risotto;
     private javax.swing.JButton spaghetti;
     // End of variables declaration//GEN-END:variables

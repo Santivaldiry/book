@@ -13,13 +13,6 @@ import java.io.IOException;
  * @author santi-juli
  */
 public class menu extends javax.swing.JFrame {
-    
-    
-    
-
-    public menu(){
-        
-    }
     /**
      * Creates new form menu
      */

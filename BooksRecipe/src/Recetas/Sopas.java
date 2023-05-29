@@ -1,11 +1,13 @@
 package Recetas;
 
+import java.awt.Container;
 import java.awt.Image;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -51,6 +53,7 @@ public class Sopas extends javax.swing.JPanel {
         ingredientes = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
         pasos = new javax.swing.JTextArea();
+        atras = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -96,10 +99,10 @@ public class Sopas extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,10 +111,17 @@ public class Sopas extends javax.swing.JPanel {
                 .addComponent(imagen)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
                     .addComponent(jScrollPane1))
-                .addContainerGap(211, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
+
+        atras.setText("Atras");
+        atras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atrasActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -124,15 +134,17 @@ public class Sopas extends javax.swing.JPanel {
                     .addComponent(ajiaco, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 136, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(atras)
+                        .addGap(83, 83, 83)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(caldo, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(100, 100, 100))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(100, 100, 100))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -148,7 +160,9 @@ public class Sopas extends javax.swing.JPanel {
                         .addGap(14, 14, 14)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(caldo, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(caldo, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(atras)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -165,7 +179,7 @@ public class Sopas extends javax.swing.JPanel {
         ImageIcon imagenIcono = new ImageIcon("C:\\Users\\Cristian\\OneDrive\\Documentos\\Universidad\\POO\\book\\BooksRecipe\\images\\ajiaco.jpg"); // Reemplaza con la ruta de tu imagen
         
         Image imagenOriginal = imagenIcono.getImage();
-        Image imagenRedimensionada = imagenOriginal.getScaledInstance(500, 300, Image.SCALE_SMOOTH);
+        Image imagenRedimensionada = imagenOriginal.getScaledInstance(500, 250, Image.SCALE_SMOOTH);
         
         ImageIcon imagenRedimensionadaIcono = new ImageIcon(imagenRedimensionada);
         imagen.setIcon(imagenRedimensionadaIcono);
@@ -181,13 +195,15 @@ public class Sopas extends javax.swing.JPanel {
             BufferedReader bufferedReader2 = new BufferedReader(fileReader2);
             
             String linea;
+            ingredientes.setText("");
+            pasos.setText("");
             while ((linea = bufferedReader1.readLine()) != null) {
-                String currText = ingredientes.getText();
+                String currText = ingredientes.getText() + "\n";
                 String nextText = currText + linea;
                 ingredientes.setText(nextText);
             }    
             while ((linea = bufferedReader2.readLine()) != null) {
-                String currText = pasos.getText();
+                String currText = pasos.getText() + "\n";
                 String nextText = currText + linea;
                 pasos.setText(nextText);
             }
@@ -204,7 +220,7 @@ public class Sopas extends javax.swing.JPanel {
         ImageIcon imagenIcono = new ImageIcon("C:\\Users\\Cristian\\OneDrive\\Documentos\\Universidad\\POO\\book\\BooksRecipe\\images\\Caldo-de-Costilla.jpg"); // Reemplaza con la ruta de tu imagen
         
         Image imagenOriginal = imagenIcono.getImage();
-        Image imagenRedimensionada = imagenOriginal.getScaledInstance(500, 300, Image.SCALE_SMOOTH);
+        Image imagenRedimensionada = imagenOriginal.getScaledInstance(500, 250, Image.SCALE_SMOOTH);
         
         ImageIcon imagenRedimensionadaIcono = new ImageIcon(imagenRedimensionada);
         imagen.setIcon(imagenRedimensionadaIcono);
@@ -220,13 +236,15 @@ public class Sopas extends javax.swing.JPanel {
             BufferedReader bufferedReader2 = new BufferedReader(fileReader2);
             
             String linea;
+            ingredientes.setText("");
+            pasos.setText("");
             while ((linea = bufferedReader1.readLine()) != null) {
-                String currText = ingredientes.getText();
+                String currText = ingredientes.getText() + "\n";
                 String nextText = currText + linea;
                 ingredientes.setText(nextText);
             }    
             while ((linea = bufferedReader2.readLine()) != null) {
-                String currText = pasos.getText();
+                String currText = pasos.getText() + "\n";
                 String nextText = currText + linea;
                 pasos.setText(nextText);
             }
@@ -239,9 +257,16 @@ public class Sopas extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_caldoActionPerformed
 
+    private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
+        this.setVisible(false);
+        menu m = new menu(1);
+        m.setVisible(true);
+    }//GEN-LAST:event_atrasActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ajiaco;
+    private javax.swing.JButton atras;
     private javax.swing.JButton caldo;
     private javax.swing.JLabel imagen;
     private javax.swing.JTextArea ingredientes;
